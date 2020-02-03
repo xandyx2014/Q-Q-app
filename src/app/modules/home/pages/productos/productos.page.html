@@ -1,0 +1,21 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-searchbar placeholder="Busqueda"></ion-searchbar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-virtual-scroll [items]="producto">
+    <ion-card *virtualItem="let item">
+      <ion-card-content fxLayout="row" fxLayoutAlign="center center">
+        <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
+        <ion-list  fxLayout="column" >
+            <h1 >Lorem ipsum dolor </h1>
+            <ion-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, similique!</ion-text>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-virtual-scroll>
+</ion-content>

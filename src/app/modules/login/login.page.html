@@ -1,0 +1,22 @@
+<ion-content>
+  <div  fxLayout="column" fxLayoutAlign="center space-between" style="height: 100%;" fxLayoutAlign="center center">
+    <div fxLayoutAlign="center" style="margin-bottom: 3em;">
+    <img style="width: 40%;" src="/assets/img/book.svg" alt="" srcset="">
+    </div>  
+    <div style="width: 80%;">
+      <form>
+        <ion-item>
+          <ion-label color="medium" position="floating">Usuario</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="medium" position="floating">Contraseña</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+        <section style="margin-top: 2em;">
+          <ion-button (click)="irHome()" expand="block">Ingresar</ion-button>
+        </section>
+      </form>
+    </div>
+  </div>
+</ion-content>

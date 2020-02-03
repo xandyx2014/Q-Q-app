@@ -1,0 +1,13 @@
+ion-toolbar {
+    --border-width: 0px !important;
+      border: 0 !important;
+      --border-style: var(--ion-color-primary);
+  }
+  .background__card {
+    background-color: var(--ion-color-primary);
+    position: relative !important;
+  }
+  ion-card {
+    margin-top: 2em ;
+    position: absolute !important;
+  }

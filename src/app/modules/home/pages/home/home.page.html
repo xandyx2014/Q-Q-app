@@ -1,0 +1,29 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="background__card" style="height: 30%; width: 100%;">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <ion-icon color="light"  name="book" style="font-size: 50px;"></ion-icon>
+    </div>
+    <ion-card class="background__cardTheme" style="width: 90%;" color="light">
+      <ion-card-header>
+        <ion-card-title >Vista general</ion-card-title>
+      </ion-card-header>
+      <ion-card-content >
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Informacion</ion-label>
+          </ion-list-header>
+          <ion-item>Pedidos pendientes :<ion-badge color="primary" slot="end">11</ion-badge></ion-item>
+          <ion-item>Pedidos entregados :<ion-badge color="success" slot="end">44</ion-badge></ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
