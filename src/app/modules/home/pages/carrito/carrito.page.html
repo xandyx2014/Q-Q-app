@@ -1,0 +1,49 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Tu carrito
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+  <ion-card *ngFor="let item of items" fxLayout="row" fxLayoutAlign="space-betwen center">
+    <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
+    <ion-card-content>
+      <ion-list style="width: 100%;">
+        <ion-list-header>
+          <ion-label color="primary">Titulo del subProducto</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Cantidad</ion-label>
+          <ion-badge color="primary" slot="end">42</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Precio</ion-label>
+          <ion-badge color="primary" slot="end">1000</ion-badge>
+        </ion-item>
+      </ion-list>
+      <ion-button color="primary" size="full">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-text color="primary">
+        <h2>Total a Pagar 2000. Bs</h2>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-button (click)="agregarCarrito()" color="primary" size="full">
+    Hacer el Pedido
+  </ion-button>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

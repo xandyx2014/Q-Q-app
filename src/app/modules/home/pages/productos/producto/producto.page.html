@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img src="/assets/img/no-image.png" alt="" srcset="" style="width: 100%;">
+    </ion-slide>
+    <ion-slide>
+      <img src="/assets/img/no-image.png" alt="" srcset="" style="width: 100%;">
+    </ion-slide>
+    <ion-slide>
+      <img src="/assets/img/no-image.png" alt="" srcset="" style="width: 100%;">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Subtitulo del item</ion-card-subtitle>
+      <ion-card-title color="primary"> 198,0045 .Bs</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="medium">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni laboriosam veritatis nam? Similique cum
+          blanditiis, nisi molestiae esse eveniet et iure consequatur, veritatis fuga voluptates commodi aspernatur, aut
+          ea voluptatum.</p>
+      </ion-text>
+      <ion-button (click)="agregarCarrito()" color="primary" expand="full">
+        Comprar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

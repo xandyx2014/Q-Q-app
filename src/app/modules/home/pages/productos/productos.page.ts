@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductosPage implements OnInit {
   producto = [{}, {}, {}, {}, {}, {}, {}, {}];
-  constructor() { }
+  constructor(
+    private route: Router
+  ) { }
 
   ngOnInit() {
   }
-
+  irProducto(id = 1) {
+    this.route.navigate([`/home/productos`, id]);
+  }
+  irSubProducto() {
+    this.route.navigate(['/home/subproductos']);
+  }
 }

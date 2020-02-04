@@ -25,6 +25,30 @@ import { FlexLayoutModule } from '@angular/flex-layout';
           {
             path: 'productos',
             loadChildren: () => import('./pages/productos/productos.module').then( m => m.ProductosPageModule)
+          },
+          {
+            path: 'productos/:id',
+            loadChildren: () => import('./pages/productos/producto/producto.module').then( m => m.ProductoPageModule)
+          },
+          {
+            path: 'subproductos',
+            loadChildren: () => import('./pages/productos/subproducto/subproducto.module').then(m => m.SubproductoPageModule)
+          },
+          {
+            path: 'carrito',
+            loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
+          },
+          {
+            path: 'pedido',
+            loadChildren: () => import('./pages/carrito/pedido/pedido.module').then(m => m.PedidoPageModule)
+          },
+          {
+            path: 'pedidos',
+            loadChildren: () => import('./pages/pedidos/pedidos.module').then(m => m.PedidosPageModule)
+          },
+          {
+            path: 'detalle-pedido',
+            loadChildren: () => import('./pages/detalle-pedido/detalle-pedido.module').then( m => m.DetallePedidoPageModule)
           }
         ]
       }

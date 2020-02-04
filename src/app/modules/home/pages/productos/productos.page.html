@@ -9,11 +9,16 @@
 <ion-content>
   <ion-virtual-scroll [items]="producto">
     <ion-card *virtualItem="let item">
-      <ion-card-content fxLayout="row" fxLayoutAlign="center center">
+      <ion-card-content  fxLayout="row" fxLayoutAlign="center center">
         <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
-        <ion-list  fxLayout="column" >
-            <h1 >Lorem ipsum dolor </h1>
-            <ion-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, similique!</ion-text>
+        <ion-list fxLayout="column">
+          <ion-text color="primary"><h2>Lorem ipsum dolor </h2></ion-text>
+          
+          <ion-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, similique!</ion-text>
+          <div fxLayoutAlign="row">
+            <ion-button size="small" (click)="irProducto()">Detalle</ion-button>
+            <ion-button size="small" (click)="irSubProducto()">Consumibles</ion-button>
+          </div>
         </ion-list>
       </ion-card-content>
     </ion-card>

@@ -5,8 +5,13 @@ export const APP_PAGE = [
         icon: 'home'
     },
     {
-        title: 'List',
-        url: '/list',
+        title: 'Productos',
+        url: '/home/productos',
+        icon: 'list'
+    },
+    {
+        title: 'Carrito',
+        url: '/home/carrito',
         icon: 'list'
     },
     {
@@ -15,3 +20,4 @@ export const APP_PAGE = [
         icon: 'log-out'
     }
 ];
+export const ACCESSTOKENMAPBOX = 'pk.eyJ1IjoieGFuZHl4MjAxNCIsImEiOiJjangxeGFyN20wMGdkM3l1cmR5b2JxOTBrIn0.Ukkn6EsM_FS50Utt56wlwQ';
