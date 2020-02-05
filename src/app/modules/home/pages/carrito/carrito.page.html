@@ -9,27 +9,31 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  
+
   <ion-card *ngFor="let item of items" fxLayout="row" fxLayoutAlign="space-betwen center">
     <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
-    <ion-card-content>
-      <ion-list style="width: 100%;">
-        <ion-list-header>
-          <ion-label color="primary">Titulo del subProducto</ion-label>
-        </ion-list-header>
-        <ion-item>
-          <ion-label>Cantidad</ion-label>
-          <ion-badge color="primary" slot="end">42</ion-badge>
-        </ion-item>
-        <ion-item>
-          <ion-label>Precio</ion-label>
-          <ion-badge color="primary" slot="end">1000</ion-badge>
-        </ion-item>
-      </ion-list>
-      <ion-button color="primary" size="full">
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>
-    </ion-card-content>
+    <div>
+      <ion-card-header>
+        <ion-card-title color="primary">Awesome Title </ion-card-title>
+        <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Maxi umque quia neque?</p>
+          <div fxLayoutAlign="center center">
+            <ion-button size="small" color="primary">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button size="small" color="secondary">1</ion-button>
+            <ion-button size="small" color="primary">
+              <ion-icon name="remove-circle"></ion-icon>
+            </ion-button>
+          </div>
+          <ion-button size="full">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+      </ion-card-content>
+    </div>
   </ion-card>
   <ion-card>
     <ion-card-content>
@@ -41,9 +45,4 @@
   <ion-button (click)="agregarCarrito()" color="primary" size="full">
     Hacer el Pedido
   </ion-button>
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="cart"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>

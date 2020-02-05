@@ -7,12 +7,17 @@ export const APP_PAGE = [
     {
         title: 'Productos',
         url: '/home/productos',
-        icon: 'list'
+        icon: 'bookmarks'
     },
     {
         title: 'Carrito',
         url: '/home/carrito',
-        icon: 'list'
+        icon: 'cart'
+    },
+    {
+        title: 'Perfil',
+        url: '/home/usuario',
+        icon: 'person'
     },
     {
         title: 'Salir',

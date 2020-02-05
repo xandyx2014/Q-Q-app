@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { ItemComprarComponent } from './components/item-comprar/item-comprar.component';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-subproducto',
@@ -10,16 +10,12 @@ import { ItemComprarComponent } from './components/item-comprar/item-comprar.com
 export class SubproductoPage implements OnInit {
   items = new Array('' , '', '', '', '');
   constructor(
-    private modalController: ModalController
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
-  async agregarCarrito() {
-    const modal = await this.modalController.create({
-      component: ItemComprarComponent,
-      cssClass: 'modal-custom-css'
-    });
-    return await modal.present();
+  verDetalle() {
+    this.router.navigate(['/home/subproductos', 1]);
   }
 }

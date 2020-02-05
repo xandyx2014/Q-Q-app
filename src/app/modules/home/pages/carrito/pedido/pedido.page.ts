@@ -18,7 +18,7 @@ export class PedidoPage implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.map = new mapboxgl.Map({
       container: 'mapContainer',
-      style: 'mapbox://styles/mapbox/streets-v11',
+      style: 'mapbox://styles/mapbox/light-v10',
       accessToken: ACCESSTOKENMAPBOX,
       // longitud / latitud
       center: [-63.1817381, -17.7839228], // starting position

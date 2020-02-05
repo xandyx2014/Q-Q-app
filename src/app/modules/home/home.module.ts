@@ -35,6 +35,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             loadChildren: () => import('./pages/productos/subproducto/subproducto.module').then(m => m.SubproductoPageModule)
           },
           {
+            path: 'subproductos/:id',
+            loadChildren: () => import('./pages/productos/subproducto/item/item.module').then(m => m.ItemPageModule)
+          },
+          {
             path: 'carrito',
             loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
           },
@@ -49,7 +53,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
           {
             path: 'detalle-pedido',
             loadChildren: () => import('./pages/detalle-pedido/detalle-pedido.module').then( m => m.DetallePedidoPageModule)
-          }
+          },
+          {
+            path: 'usuario',
+            loadChildren: () => import('./pages/usuario/usuario.module').then( m => m.UsuarioPageModule)
+          },
         ]
       }
     ])

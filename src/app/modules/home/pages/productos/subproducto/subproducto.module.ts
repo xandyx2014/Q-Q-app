@@ -8,7 +8,6 @@ import { SubproductoPageRoutingModule } from './subproducto-routing.module';
 
 import { SubproductoPage } from './subproducto.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ItemComprarComponent } from './components/item-comprar/item-comprar.component';
 
 @NgModule({
   imports: [
@@ -18,9 +17,6 @@ import { ItemComprarComponent } from './components/item-comprar/item-comprar.com
     FlexLayoutModule,
     SubproductoPageRoutingModule
   ],
-  declarations: [SubproductoPage, ItemComprarComponent],
-  entryComponents: [
-    ItemComprarComponent
-  ]
+  declarations: [SubproductoPage],
 })
 export class SubproductoPageModule {}
