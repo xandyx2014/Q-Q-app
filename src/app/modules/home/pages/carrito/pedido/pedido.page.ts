@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { ACCESSTOKENMAPBOX } from 'src/app/config/variable.config';
 import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { InformacionService } from 'src/app/core/services/informacion.service';
 @Component({
   selector: 'app-pedido',
   templateUrl: './pedido.page.html',
@@ -10,15 +11,28 @@ import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 export class PedidoPage implements OnInit, AfterViewInit {
   map: mapboxgl.Map;
   marker: mapboxgl.Marker;
-  constructor() {
+  buttonDesactivado = true;
+  constructor(
+    private informacionService: InformacionService
+  ) {
   }
 
   ngOnInit() {
   }
+  hacerPedido() {
+    if (this.buttonDesactivado) {
+      return this.informacionService.presentToast('El mapa no termina de cargar');
+    }
+    return this.informacionService.presentAlert({
+      header: 'Pedido',
+      subHeader: 'Completado',
+      message: 'Se ha realizado el pedido'
+    });
+  }
   ngAfterViewInit(): void {
     this.map = new mapboxgl.Map({
       container: 'mapContainer',
-      style: 'mapbox://styles/mapbox/light-v10',
+      style: 'mapbox://styles/mapbox/light-v10?optimize=true',
       accessToken: ACCESSTOKENMAPBOX,
       // longitud / latitud
       center: [-63.1817381, -17.7839228], // starting position
@@ -26,22 +40,12 @@ export class PedidoPage implements OnInit, AfterViewInit {
     });
     this.map.on('load', () => {
       this.map.resize();
+      this.buttonDesactivado = false;
     });
     this.map.on('move', (e) => {
-      console.log(this.map.getCenter());
+      const {lng, lat} = this.map.getCenter();
+      console.log(`lng ${lng}`, `lat ${lat}`);
     });
-    /* this.marker = new mapboxgl.Marker({
-      draggable: true
-    }).setLngLat([-63.1817381, -17.7839228]).addTo(this.map);
-    this.marker.on('dragend', this.onDragEnd.bind(this)); */
     this.map.addControl(new mapboxgl.NavigationControl());
   }
-  onDragEnd() {
-    const coordinates = document.getElementById('coordinates');
-    const lngLat = this.marker.getLngLat();
-    coordinates.style.display = 'block';
-    coordinates.innerHTML =
-    'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-  }
-
 }

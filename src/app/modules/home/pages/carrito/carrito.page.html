@@ -9,17 +9,17 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
-  <ion-card *ngFor="let item of items" fxLayout="row" fxLayoutAlign="space-betwen center">
-    <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
-    <div>
-      <ion-card-header>
-        <ion-card-title color="primary">Awesome Title </ion-card-title>
-        <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Maxi umque quia neque?</p>
+  <div class="focus-in">
+    <ion-card *ngFor="let item of items" fxLayout="row" fxLayoutAlign="space-betwen center">
+      <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
+      <div>
+        <ion-card-header>
+          <ion-card-title color="primary">Awesome Title </ion-card-title>
+          <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Maxi umque quia neque?</p>
           <div fxLayoutAlign="center center">
             <ion-button size="small" color="primary">
               <ion-icon name="add-circle-outline"></ion-icon>
@@ -32,17 +32,18 @@
           <ion-button size="full">
             <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-button>
+        </ion-card-content>
+      </div>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-text color="primary">
+          <h2>Total a Pagar 2000. Bs</h2>
+        </ion-text>
       </ion-card-content>
-    </div>
-  </ion-card>
-  <ion-card>
-    <ion-card-content>
-      <ion-text color="primary">
-        <h2>Total a Pagar 2000. Bs</h2>
-      </ion-text>
-    </ion-card-content>
-  </ion-card>
-  <ion-button (click)="agregarCarrito()" color="primary" size="full">
-    Hacer el Pedido
-  </ion-button>
+    </ion-card>
+    <ion-button (click)="agregarCarrito()" color="primary" size="full">
+      Hacer el Pedido
+    </ion-button>
+  </div>
 </ion-content>
