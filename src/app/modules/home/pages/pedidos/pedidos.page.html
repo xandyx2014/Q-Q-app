@@ -9,52 +9,53 @@
 
 <ion-content>
   <div class="focus-in">
-  <ion-list>
-    <ion-list-header>Multiple Filtros</ion-list-header>
-  
-    <ion-item>
-      <ion-label>Toppings</ion-label>
-      <ion-select multiple="true" cancelText="Cancelar" okText="Aceptar">
-        <ion-select-option value="bacon">Bacon</ion-select-option>
-        <ion-select-option value="olives">Black Olives</ion-select-option>
-        <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
-        <ion-select-option value="peppers">Green Peppers</ion-select-option>
-        <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
-        <ion-select-option value="onions">Onions</ion-select-option>
-        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-        <ion-select-option value="pineapple">Pineapple</ion-select-option>
-        <ion-select-option value="sausage">Sausage</ion-select-option>
-        <ion-select-option value="Spinach">Spinach</ion-select-option>
-      </ion-select>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label>Pets</ion-label>
-      <ion-select multiple="true">
-        <ion-select-option value="bird" selected>Bird</ion-select-option>
-        <ion-select-option value="cat">Cat</ion-select-option>
-        <ion-select-option value="dog" selected>Dog</ion-select-option>
-        <ion-select-option value="honeybadger">Honey Badger</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Entregados</ion-label>
-      <ion-toggle color="primary"></ion-toggle>
-    </ion-item>
-  </ion-list>
-  <ion-button color="primary" size="full">
-    Buscar
-  </ion-button>
-  <ion-card *ngFor="let item of items" fxLayout="row" fxLayoutAlign="space-betwen center">
-    <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
-    <ion-card-content>
-      <ion-text color="primary"><h3>Titulo del subProducto</h3></ion-text>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate atque pariatur modi voluptatem recusandae
-        ullam i.</p>
-        <ion-button (click)="verDetalle()" size="full">
-          ver Detalle
-        </ion-button>
-    </ion-card-content>
-  </ion-card>
+    <ion-list>
+      <ion-list-header>Multiple Filtros</ion-list-header>
+      <ion-item>
+        <ion-label>Entregados</ion-label>
+        <ion-toggle [(ngModel)]="estado" color="primary"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="buscar()" color="primary" size="full">
+      Buscar
+    </ion-button>
+    <ng-container *ngIf="ok; else elseTemplate">
+      <ng-container *ngIf="ordenes.length; else arrayTemplate">
+        <ion-card *ngFor="let item of ordenes" fxLayout="row" fxLayoutAlign="space-betwen center">
+          <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
+          <ion-card-content>
+            <ion-text color="primary">
+              <h3>Sub Total {{item.subtotal}}</h3>
+            </ion-text>
+            <ion-list>
+              <ion-item>
+                <ion-label>Descuento: {{item.discount}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Total: {{item.total}}</ion-label>
+              </ion-item>
+            </ion-list>
+            <ion-button (click)="verDetalle(item)" size="full">
+              ver Detalle
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+      <ng-template #arrayTemplate>
+        <ion-text color="primary">
+          No hay ordenes presione "Buscar"
+        </ion-text>
+      </ng-template>
+
+
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div style="width: 100%;" fxLayoutAlign="center center">
+        <ion-spinner name="bubbles"></ion-spinner>
+      </div>
+
+    </ng-template>
+
+
   </div>
 </ion-content>

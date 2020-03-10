@@ -1,0 +1,18 @@
+<ion-content>
+  <ion-slides  pager="true" class="slide-full" #slidesView>
+    <ion-slide *ngFor="let slide of slides">
+      <ion-card mode="md">
+        <img [src]="slide.img" alt="" class="slide-image">
+        <ion-card-header>
+          <ion-card-title color="primary">{{ slide.titulo}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ slide.desc}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-button  (click)="terminarTour()" expand="full" color="primary" class="tooltip" title="HOla desde el toolpit" fill="outline" (click)="irLogin()">Comenzar</ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

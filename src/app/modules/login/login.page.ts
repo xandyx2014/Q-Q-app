@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/core/auth/login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,14 +10,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  myForm: FormGroup;
+  ok = false;
   constructor(
-    private route: Router
+    private menuCtrl: MenuController,
+    private fb: FormBuilder,
+    private loginService: LoginService
   ) { }
-
+  crearFormulario() {
+    this.myForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
   ngOnInit() {
   }
-  irHome() {
-    this.route.navigate(['home']);
+  save() {
+    this.loginService.getToken({
+      user: this.myForm.get('username').value,
+      password: this.myForm.get('password').value
+    });
+  }
+  ionViewWillEnter() {
+    this.loginService.logout();
+    this.menuCtrl.enable(false).then(() => {
+      this.crearFormulario();
+      this.ok = true;
+    });
   }
 }

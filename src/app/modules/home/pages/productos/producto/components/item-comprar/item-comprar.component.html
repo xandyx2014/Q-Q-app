@@ -6,13 +6,16 @@
         <ion-card-title color="primary">Producto</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <form>
+        <form [formGroup]="myForm">
           <ion-item>
             <ion-label color="medium" position="floating">Cantidad</ion-label>
-            <ion-input type="number" min="0"></ion-input>
+            <ion-input formControlName="cantidadComprar" type="number"></ion-input>
+            <ion-text  *ngIf="myForm.get('cantidadComprar').hasError('required') && myForm.get('cantidadComprar').touched" color="danger">
+              Formato Incorrecto
+            </ion-text>
           </ion-item>
           
-            <ion-button expand="full" (click)="comprar()">Comprar</ion-button>
+            <ion-button expand="full" (click)="comprar()" [disabled]="myForm.invalid">Comprar</ion-button>
             <ion-button expand="full" (click)="cancelar()">cancelar</ion-button>
           
         </form>

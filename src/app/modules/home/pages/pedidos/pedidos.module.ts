@@ -15,6 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     IonicModule,
     PedidosPageRoutingModule,
+    FlexLayoutModule,
     FlexLayoutModule
   ],
   declarations: [PedidosPage]

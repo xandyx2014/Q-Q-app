@@ -1,3 +1,8 @@
+import { ProductoEffect } from './producto.effect';
+import { SubProductoEffect } from './subProducto.effect';
 
 
-export const effectsArray = [];
+export const effectsArray = [
+    ProductoEffect,
+    SubProductoEffect
+];

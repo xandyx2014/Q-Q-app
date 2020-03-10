@@ -8,9 +8,128 @@
 </ion-header>
 
 <ion-content>
-  <ngx-datatable
-  class="material"
-  [rows]="rows"
-  [columns]="columns">
-</ngx-datatable>
+  <div>
+    <ng-container *ngIf="ok; else elseTemplate">
+      <ngx-datatable #myTable class="material expandable" [columnMode]="ColumnMode.force" [headerHeight]="50"
+        [footerHeight]="50" [rowHeight]="50" [scrollbarV]="true" [rows]="rows" (page)="onPage($event)">
+        <!-- Row Detail Template -->
+        <ngx-datatable-row-detail rowHeight="500" #myDetailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <div style="padding-left:15px;">
+                  <ion-list>
+                    <ion-list-header>
+                      <ion-label>Detalle del producto</ion-label>
+                    </ion-list-header>
+                    <ion-item>
+                      <ion-label>Codigo</ion-label>
+                      <ion-text color="primary">
+                        {{ row.product.code}}
+                      </ion-text>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Nombre corto</ion-label>
+                      <ion-text color="primary">
+                        {{ row.product.trade_name}}
+                      </ion-text>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Nombre Generico</ion-label>
+                      <ion-text color="primary">
+                        {{ row.product.generic_name}}
+                      </ion-text>
+                    </ion-item>
+                  </ion-list>
+                  <ion-list>
+                    <ion-list-header>
+                      <ion-label>Detalle del pedido</ion-label>
+                    </ion-list-header>
+                    <ion-item>
+                      <ion-label>Cantidad</ion-label>
+                      <ion-text color="primary">
+                        {{ row.quantity}}
+                      </ion-text>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Precio Venta</ion-label>
+                      <ion-text color="primary">
+                        {{ row.price_sale}}
+                      </ion-text>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Precio Compra</ion-label>
+                      <ion-text color="primary">
+                        {{ row.price_sale}}
+                      </ion-text>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Precio Refeencia</ion-label>
+                      <ion-text color="primary">
+                        {{ row.price_reference}}
+                      </ion-text>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-text color="primary">
+                        {{ row.total}}
+                      </ion-text>
+                    </ion-item>
+                  </ion-list>
+              
+            </div>
+          </ng-template>
+        </ngx-datatable-row-detail>
+        <!-- Column Templates -->
+        <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+          [canAutoResize]="false">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded"
+              title="Expand/Collapse Row" (click)="toggleExpandRow(row)">
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- index -->
+        <ngx-datatable-column name="Index" width="25">
+          <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+            <strong>{{ rowIndex  + 1}}</strong>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Producto" width="70">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i [innerHTML]="row['product'].generic_name"></i>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- 
+          <ngx-datatable-column name="Cantidad" width="80">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i [innerHTML]="row['quantity']"></i>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Precio de coste" width="80">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i [innerHTML]="row['price_cost']"></i>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Precio de Venta" width="80">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i [innerHTML]="row['price_sale']"></i>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Precio de Referencia" width="80">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i [innerHTML]="row['price_reference']"></i>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Total" width="80">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <i [innerHTML]="row['total']"></i>
+          </ng-template>
+        </ngx-datatable-column>  -->
+      </ngx-datatable>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ng-template>
+
+
+  </div>
 </ion-content>

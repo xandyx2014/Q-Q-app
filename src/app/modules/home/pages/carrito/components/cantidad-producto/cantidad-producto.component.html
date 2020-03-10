@@ -1,0 +1,25 @@
+<ion-content>
+  <div fxLayoutAlign="center center" style="height: 100%;">
+    <ion-card style="height: 100%;">
+      <ion-card-header>
+        <ion-card-subtitle>Seleccione la cantidad a comprar</ion-card-subtitle>
+        <ion-card-title color="primary">Producto</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="myForm">
+          <ion-item>
+            <ion-label color="medium" position="floating">Cantidad</ion-label>
+            <ion-input formControlName="cantidadComprar" type="number"></ion-input>
+            <ion-text  *ngIf="myForm.get('cantidadComprar').hasError('required') && myForm.get('cantidadComprar').touched" color="danger">
+              Formato Incorrecto
+            </ion-text>
+          </ion-item>
+          
+            <ion-button expand="full" (click)="comprar()" [disabled]="myForm.invalid">Cambiar</ion-button>
+            <ion-button expand="full" (click)="cancelar()">cancelar</ion-button>
+          
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -31,11 +31,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             loadChildren: () => import('./pages/productos/producto/producto.module').then( m => m.ProductoPageModule)
           },
           {
-            path: 'subproductos',
+            path: 'subproductos/:id',
             loadChildren: () => import('./pages/productos/subproducto/subproducto.module').then(m => m.SubproductoPageModule)
           },
           {
-            path: 'subproductos/:id',
+            path: 'consumible/:id',
             loadChildren: () => import('./pages/productos/subproducto/item/item.module').then(m => m.ItemPageModule)
           },
           {
@@ -51,7 +51,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             loadChildren: () => import('./pages/pedidos/pedidos.module').then(m => m.PedidosPageModule)
           },
           {
-            path: 'detalle-pedido',
+            path: 'detalle-pedido/:id',
             loadChildren: () => import('./pages/detalle-pedido/detalle-pedido.module').then( m => m.DetallePedidoPageModule)
           },
           {

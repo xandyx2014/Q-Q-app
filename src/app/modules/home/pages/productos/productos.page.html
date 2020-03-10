@@ -8,23 +8,41 @@
 </ion-header>
 <ion-content>
   <div class="focus-in">
-    <ion-virtual-scroll [items]="producto">
-      <ion-card *virtualItem="let item">
+    <ng-container *ngIf="productos; else elseTemplate">
+      <ion-card *ngFor="let item of productos.data">
         <ion-card-content fxLayout="row" fxLayoutAlign="center center">
-          <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
+          <ng-container *ngIf="item?.images.length; else elseTemplate">
+            <img style="width: 25%; height: 25%;" [src]="item?.images[0].url" alt="" srcset="">
+          </ng-container>
+          <ng-template #elseTemplate>
+            <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
+          </ng-template>
+          
+          
           <ion-list fxLayout="column">
             <ion-text color="primary">
-              <h2>Lorem ipsum dolor </h2>
+              <h3>{{ item.trade_name }} </h3>
             </ion-text>
 
-            <ion-text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, similique!</ion-text>
+          <ion-text>{{ item.generic_name | slice:0:20}}...</ion-text>
             <div fxLayoutAlign="row">
-              <ion-button size="small" (click)="irProducto()">Ver</ion-button>
-              <ion-button size="small" (click)="irSubProducto()">Consumibles</ion-button>
+              <ion-button size="small" (click)="irProducto(item.id)">Ver</ion-button>
+              <ion-button size="small" (click)="irSubProducto(item)">Consumibles</ion-button>
             </div>
           </ion-list>
         </ion-card-content>
       </ion-card>
-    </ion-virtual-scroll>
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="cargarDato($event, productos.meta)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Cargando datos...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div style="height: 100vh; width: 100vw;" fxLayout="row" fxLayoutAlign="center center">
+        <ion-spinner style="width: 40px;"></ion-spinner>
+      </div>
+    </ng-template>  
   </div>
 </ion-content>

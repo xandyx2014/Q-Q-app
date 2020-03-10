@@ -1,35 +1,107 @@
-
-
 <ion-content>
-<div id="mapContainer" class="mapbox">
-    <img style="width: 15%; height: 15%;" src="/assets/img/marker.svg" alt="" srcset=""></div>
-<ion-card>
-    <ion-card-header>
-        <ion-card-subtitle>Informacion</ion-card-subtitle>
-        <ion-card-title>Datos del cliente</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-        <form>
-            <ion-item>
-              <ion-label color="medium" position="floating">CI/NIT</ion-label>
-              <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label color="medium" position="floating">Nombre</ion-label>
-              <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label color="medium" position="floating">Calle direccion</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label color="medium" position="floating">Telefono</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <section style="margin-top: 2em;">
-              <ion-button (click)="hacerPedido()"  expand="block">Realizar pedido</ion-button>
-            </section>
-          </form>
-    </ion-card-content>
-</ion-card>
+  <div id="mapContainer" class="mapbox">
+    <img style="width: 15%; height: 15%;" src="/assets/img/marker.svg" alt="" srcset="">  
+  </div>
+
+  <ng-container *ngIf="ok; else elseTemplate">
+    <form [formGroup]="myForm" class="focus-in">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="stacked">Nombre usuario<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="name" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('name').hasError('required') && myForm.get('name').touched" color="danger">
+          El nombre es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Apellido Paterno<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="father_last_name" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('father_last_name').hasError('required') && myForm.get('father_last_name').touched"
+          color="danger">
+          El apellido paterno es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Apellido Materno<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="mother_last_name" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('mother_last_name').hasError('required') && myForm.get('mother_last_name').touched"
+          color="danger">
+          El apellido materno es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">CI<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="ci"  disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('ci').hasError('required') && myForm.get('ci').touched" color="danger">
+          El CI es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Fecha Cumpleaño<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-datetime formControlName="birth_date" disabled display-format="YYYY-MM-DD" min="1900"></ion-datetime>
+          <!-- <ion-input type="text"></ion-input> -->
+        </ion-item>
+        <ion-text *ngIf="myForm.get('birth_date').hasError('required') && myForm.get('birth_date').touched"
+          color="danger">
+          La fecha de nacimiento es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Lugar de nacimiento<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="birth_place" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('birth_place').hasError('required') && myForm.get('birth_place').touched"
+          color="danger">
+          Lugar de nacimiento es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Telefono<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="phone" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('phone').hasError('required') && myForm.get('phone').touched" color="danger">
+          El telefono es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Celular<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="cell_phone" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('cell_phone').hasError('required') && myForm.get('cell_phone').touched"
+          color="danger">
+          El numero movil es requerido
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Direccion<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="address" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('address').hasError('required') && myForm.get('address').touched" color="danger">
+          La direccion es requerida
+        </ion-text>
+        <ion-item>
+          <ion-label position="stacked">Email<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="email" disabled type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="myForm.get('email').hasError('required') && myForm.get('email').touched" color="danger">
+          El email es requerido
+        </ion-text>
+        <ion-text *ngIf="myForm.get('email').hasError('email') && myForm.get('email').touched" color="danger">
+          El email no es valido
+        </ion-text>
+      </ion-list>
+      <ion-button size="full" (click)="hacerPedido()" [disabled]="myForm.invalid && buttonDesactivado">
+        Aceptar
+      </ion-button>
+    </form>
+  </ng-container>
+  <ng-template #elseTemplate>
+
+  </ng-template>
 </ion-content>

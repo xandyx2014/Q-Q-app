@@ -9,41 +9,63 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="focus-in">
-    <ion-card *ngFor="let item of items" fxLayout="row" fxLayoutAlign="space-betwen center">
-      <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
-      <div>
-        <ion-card-header>
-          <ion-card-title color="primary">Awesome Title </ion-card-title>
-          <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
-        </ion-card-header>
+  <ng-container *ngIf="carrito.length; else elseTemplate">
+    <div class="focus-in">
+      <ion-card *ngFor="let item of carrito" fxLayout="row" fxLayoutAlign="center">
+        <div>
+          <ion-card-header>
+            <ion-card-title color="primary">{{item.trade_name}}</ion-card-title>
+            <ion-card-subtitle>{{ item.generic_name}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content style="width: 100vw;">
+            <ion-list>
+              <ion-list-header>Descripcion</ion-list-header>
+              <ion-item>
+                <ion-label>Precio</ion-label>
+                <ion-badge slot="end">{{item.price_sale}}</ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Cantidad</ion-label>
+                <ion-badge slot="end">{{item.cantidad}}</ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-label>Total</ion-label>
+                <ion-badge slot="end">{{item.cantidad * item.price_sale}}</ion-badge>
+              </ion-item>
+
+            </ion-list>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <ion-button (click)="cantidadProducto(item)" size="full">
+                <img src="/assets/img/pencil.svg" style="width: 15px;" alt="" srcset="">
+              </ion-button>
+              <ion-button (click)="eliminarItem(item)" size="full">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+            </div>
+            
+          </ion-card-content>
+        </div>
+      </ion-card>
+      <ion-card>
         <ion-card-content>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Maxi umque quia neque?</p>
-          <div fxLayoutAlign="center center">
-            <ion-button size="small" color="primary">
-              <ion-icon name="add-circle-outline"></ion-icon>
-            </ion-button>
-            <ion-button size="small" color="secondary">1</ion-button>
-            <ion-button size="small" color="primary">
-              <ion-icon name="remove-circle"></ion-icon>
-            </ion-button>
-          </div>
-          <ion-button size="full">
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
-          </ion-button>
+          <ion-text color="primary">
+            <h3>Total a Pagar {{ carrito | sumProducto }}</h3>
+          </ion-text>
         </ion-card-content>
-      </div>
-    </ion-card>
-    <ion-card>
-      <ion-card-content>
-        <ion-text color="primary">
-          <h2>Total a Pagar 2000. Bs</h2>
-        </ion-text>
-      </ion-card-content>
-    </ion-card>
-    <ion-button (click)="agregarCarrito()" color="primary" size="full">
-      Hacer el Pedido
-    </ion-button>
-  </div>
+      </ion-card>
+      <ion-button (click)="agregarCarrito()" color="primary" size="full">
+        Hacer el Pedido
+      </ion-button>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div fxLayoutAlign="center center" style="width: 100vw; height: 50vh;">
+      <ion-text color="primary">
+        Hay items Agregados Al carrito
+      </ion-text>
+    </div>
+
+  </ng-template>
+
+
 </ion-content>
