@@ -2,14 +2,14 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-searchbar placeholder="Busqueda"></ion-searchbar>
+     <!--  <ion-searchbar placeholder="Busqueda"></ion-searchbar> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ng-container *ngIf="subProductos.length; else elseTemplate">
-    <ion-card *ngFor="let item of subProductos" fxLayout="row" fxLayoutAlign="space-betwen center">
+    <ion-card *ngFor="let item of subProductos" mode="ios" fxLayout="row" fxLayoutAlign="space-betwen center">
       <ng-container *ngIf="item?.images?.length; else elseTemplate">
         <img style="width: 25%; height: 25%;" [src]="item?.images[0].url" alt="" srcset="">
       </ng-container>
@@ -21,7 +21,7 @@
           <h3>{{ item.trade_name}}</h3>
         </ion-text>
         <p>{{ item.description }}</p>
-        <ion-button (click)="verDetalle(item)" size="full">
+        <ion-button (click)="verDetalle(item)"  fill="outline">
           Ver Producto
         </ion-button>
       </ion-card-content>

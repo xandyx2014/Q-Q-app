@@ -2,32 +2,30 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-searchbar placeholder="Busqueda"></ion-searchbar>
+      <ion-searchbar placeholder="Busqueda" (ionChange)="busqueda($event)"></ion-searchbar>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="focus-in">
     <ng-container *ngIf="productos; else elseTemplate">
-      <ion-card *ngFor="let item of productos.data">
-        <ion-card-content fxLayout="row" fxLayoutAlign="center center">
-          <ng-container *ngIf="item?.images.length; else elseTemplate">
-            <img style="width: 25%; height: 25%;" [src]="item?.images[0].url" alt="" srcset="">
-          </ng-container>
-          <ng-template #elseTemplate>
-            <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
-          </ng-template>
-          
-          
+      <ion-card *ngFor="let item of productos.data" mode="ios" fxLayout="row" fxLayoutAlign="space-betwen center">
+        <ng-container *ngIf="item?.images.length; else elseTemplate">
+            <img style="width: 30%; height: 25%;" [src]="item?.images[0].url" alt="" srcset="">
+        </ng-container>
+        <ng-template #elseTemplate>
+          <img style="width: 30%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">
+        </ng-template>
+        <ion-card-content fxLayout="row" fxLayoutAlign="space-betwen center">
           <ion-list fxLayout="column">
             <ion-text color="primary">
               <h3>{{ item.trade_name }} </h3>
             </ion-text>
-
+           
           <ion-text>{{ item.generic_name | slice:0:20}}...</ion-text>
             <div fxLayoutAlign="row">
-              <ion-button size="small" (click)="irProducto(item.id)">Ver</ion-button>
-              <ion-button size="small" (click)="irSubProducto(item)">Consumibles</ion-button>
+              <ion-button size="small" fill="outline" (click)="irProducto(item.id)">Ver</ion-button>
+              <ion-button size="small" fill="outline" (click)="irSubProducto(item)">Consumibles</ion-button>
             </div>
           </ion-list>
         </ion-card-content>

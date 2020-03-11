@@ -1,5 +1,6 @@
 <ion-content>
   <ion-slides pager="true" [options]="slideOpts" >
+    
     <ion-slide *ngFor="let item of producto?.images">
       <ng-container>
         <img style="width: 100%; height: 45vh; background-size: cover;" [src]="item.url" alt="" srcset="">
@@ -23,7 +24,7 @@
       <ion-text color="medium">
         <p>{{ producto.description}}</p>
       </ion-text>
-      <ion-button (click)="agregarCarrito()" color="primary" expand="full">
+      <ion-button (click)="agregarCarrito()" color="primary" fill="outline" size="full" style="margin: 0 5px;">
         Comprar
       </ion-button>
     </ion-card-content>

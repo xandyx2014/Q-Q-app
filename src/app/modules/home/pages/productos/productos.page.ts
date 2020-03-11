@@ -7,7 +7,7 @@ import { RespProductos } from 'src/app/shared/interfaces/producto.interface';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { PRODUCTO_URL_PAGINATE } from 'src/app/config/variable.config';
 import { InformacionService } from 'src/app/core/services/informacion.service';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { tap, filter } from 'rxjs/operators';
 
 @Component({
@@ -19,6 +19,7 @@ export class ProductosPage implements OnInit {
   @ViewChild(IonInfiniteScroll, { static: true }) infiniteScroll: IonInfiniteScroll;
   productos: RespProductos;
   productos$: Subscription = new Subscription();
+  q = '';
   constructor(
     private route: Router,
     private store: Store<AppState>,
@@ -30,9 +31,22 @@ export class ProductosPage implements OnInit {
   ionViewWillEnter() {
     this.store.dispatch(vaciarProductoAction());
     this.store.dispatch(pedirProductoAction({
-      url: PRODUCTO_URL_PAGINATE
+      url: PRODUCTO_URL_PAGINATE,
+      q: this.q
     }));
     this.solicitarProducto();
+  }
+  busqueda(event) {
+    this.q = event.detail.value;
+    setTimeout(() => {
+      // console.log(q);
+      this.store.dispatch(vaciarProductoAction());
+      this.store.dispatch(pedirProductoAction({
+        url: PRODUCTO_URL_PAGINATE,
+        q: event.detail.value
+      }));
+    }, 300);
+    // console.log(q);
   }
   solicitarProducto() {
     this.productos$ = this.store.pipe(

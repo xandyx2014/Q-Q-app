@@ -28,7 +28,7 @@ export class ItemComprarComponent implements OnInit {
   }
   crearFormulario() {
     this.myForm = this.fb.group({
-      cantidadComprar: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(10000), Validators.pattern('^[0-9]+$')])
+      cantidadComprar: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(100000), Validators.pattern('^[0-9]+$')])
     });
   }
   comprar() {

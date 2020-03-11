@@ -11,7 +11,8 @@ export class ProductoEffect {
         ofType(pedirProductoAction),
         switchMap( action => {
             const {url} = action;
-            return this.productoService.obtenerProducto(url).pipe(
+            const { q } = action;
+            return this.productoService.obtenerProducto(url, q).pipe(
                 map((result: any) => {
                     return agregarProductoAction({...result});
                 })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { LoginService } from '../auth/login.service';
 import { from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class ProductosService {
     private http: HttpClient
   ) { }
 
-  obtenerProducto(url = PRODUCTO_URL_PAGINATE) {
+  obtenerProducto(url = PRODUCTO_URL_PAGINATE, q = '') {
     return from(
       this.loginService.userAuth()
     ).pipe(
@@ -24,7 +24,12 @@ export class ProductosService {
           ['Content-Type']: 'application/json',
           ['Authorization']: `Bearer ${usuario[0].token}`
         });
-        return this.http.get(`${url}&per_page=20`, { headers });
+        const params = new HttpParams({
+          fromObject: {
+            q
+          }
+        });
+        return this.http.get(`${url}&per_page=20`, { headers, params });
       })
     );
   }

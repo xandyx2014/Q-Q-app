@@ -9,16 +9,46 @@
 
 <ion-content>
   <div class="focus-in">
+    <form [formGroup]="myForm">
     <ion-list>
       <ion-list-header>Multiple Filtros</ion-list-header>
       <ion-item>
         <ion-label>Entregados</ion-label>
-        <ion-toggle [(ngModel)]="estado" color="primary"></ion-toggle>
+        <ion-toggle formControlName="state_order" color="primary"></ion-toggle>
       </ion-item>
+      <ion-item>
+        <ion-label>Fecha inicial</ion-label>
+        <ion-datetime  formControlName="minDate" displayFormat="DD-MM-YYYY" cancelText="Cancelar" doneText="Abandonar"></ion-datetime>
+      </ion-item>
+      <ion-text  *ngIf="myForm.get('minDate').hasError('required') && myForm.get('minDate').touched" color="danger">
+        Formato tiene que ser Valido
+      </ion-text>
+      <ion-item>
+        <ion-label>Fecha final</ion-label>
+        <ion-datetime  formControlName="maxDate" displayFormat="DD-MM-YYYY" cancelText="Cancelar" doneText="Abandonar"></ion-datetime>
+      </ion-item>
+      <ion-text  *ngIf="myForm.get('maxDate').hasError('required') && myForm.get('maxDate').touched" color="danger">
+        Formato tiene que ser Valido
+      </ion-text>
+      <ion-item>
+        <ion-label position="stacked">Precio inicial</ion-label>
+        <ion-input formControlName="minMount"></ion-input>
+      </ion-item>
+      <ion-text  *ngIf="myForm.get('minMount').hasError('required') && myForm.get('minMount').touched" color="danger">
+        Formato tiene que ser Valido
+      </ion-text>
+      <ion-item>
+        <ion-label position="stacked">Precio Final</ion-label>
+        <ion-input formControlName="maxMount"></ion-input>
+      </ion-item>
+      <ion-text  *ngIf="myForm.get('maxMount').hasError('required') && myForm.get('maxMount').touched" color="danger">
+        Formato tiene que ser Valido
+      </ion-text>
     </ion-list>
-    <ion-button (click)="buscar()" color="primary" size="full">
+    <ion-button (click)="buscar()" color="primary" size="full" [disabled]="myForm.invalid">
       Buscar
     </ion-button>
+  </form>
     <ng-container *ngIf="ok; else elseTemplate">
       <ng-container *ngIf="ordenes.length; else arrayTemplate">
         <ion-card *ngFor="let item of ordenes" fxLayout="row" fxLayoutAlign="space-betwen center">
@@ -35,7 +65,7 @@
                 <ion-label>Total: {{item.total}}</ion-label>
               </ion-item>
             </ion-list>
-            <ion-button (click)="verDetalle(item)" size="full">
+            <ion-button (click)="verDetalle(item)" size="full" >
               ver Detalle
             </ion-button>
           </ion-card-content>
