@@ -9,9 +9,9 @@
 
 <ion-content>
   <ng-container *ngIf="subProductos.length; else elseTemplate">
-    <ion-card *ngFor="let item of subProductos" mode="ios" fxLayout="row" fxLayoutAlign="space-betwen center">
+    <ion-card *ngFor="let item of subProductos; let i = index" mode="ios" fxLayout="row" fxLayoutAlign="space-betwen center">
       <ng-container *ngIf="item?.images?.length; else elseTemplate">
-        <img style="width: 25%; height: 25%;" [src]="item?.images[0].url" alt="" srcset="">
+        <img [id]="i" (click)="iniciarImagenes(i)" style="width: 25%; height: 25%;" [src]="item?.images[0].url | isOnline"  alt="" srcset="">
       </ng-container>
       <ng-template #elseTemplate>
         <img style="width: 25%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">

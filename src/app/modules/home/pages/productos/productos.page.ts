@@ -60,6 +60,9 @@ export class ProductosPage implements OnInit {
   ionViewDidLeave() {
     this.productos$.unsubscribe();
   }
+  estaOnline() {
+    return navigator.onLine;
+  }
   cargarDato(event, meta: RespProductos['meta']) {
     // tslint:disable-next-line: no-string-literal
     const next = meta.pagination.links.next;

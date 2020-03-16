@@ -14,6 +14,7 @@ export class SubProductoEffect {
             const {id} = action;
             return this.productoService.obtenerSubProducto(id).pipe(
                 map((result: any) => {
+                    console.log(result);
                     return agregarSubProductoAction({ data: result.data});
                 })
             );

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ItemComprarComponent } from './components/item-comprar/item-comprar.component';
 import { AppState } from 'src/app/store/app.redux';
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { Producto } from 'src/app/shared/interfaces/producto.interface';
 import { map, filter, tap, pluck, switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import Viewer from 'viewerjs';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.page.html',
@@ -34,6 +34,17 @@ export class ProductoPage implements OnInit {
     .subscribe( (resp) => {
       this.producto = resp;
     } );
+  }
+  ionViewWillEnter() {
+  }
+  iniciarImagenes(event) {
+    console.log(event);
+    const i = `producto-${event}`;
+    const viewer = new Viewer(document.getElementById(i), {
+      viewed() {
+        viewer.zoomTo(1);
+      },
+    });
   }
   iniciarDatos(id) {
     return this.store.pipe(

@@ -8,6 +8,7 @@ import { ProductosPageRoutingModule } from './productos-routing.module';
 
 import { ProductosPage } from './productos.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     IonicModule,
     FlexLayoutModule,
+    PipesModule,
     ProductosPageRoutingModule
   ],
   declarations: [ProductosPage]

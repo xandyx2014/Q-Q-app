@@ -37,6 +37,9 @@
               },
               {
                 "input": "src/global.scss"
+              }, 
+              {
+                "input": "node_modules/viewerjs/dist/viewer.min.css"
               }
             ],
             "scripts": []

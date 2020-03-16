@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-searchbar placeholder="Busqueda" (ionChange)="busqueda($event)"></ion-searchbar>
+      <ion-searchbar mode="md" placeholder="Busqueda" (ionChange)="busqueda($event)"></ion-searchbar>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
     <ng-container *ngIf="productos; else elseTemplate">
       <ion-card *ngFor="let item of productos.data" mode="ios" fxLayout="row" fxLayoutAlign="space-betwen center">
         <ng-container *ngIf="item?.images.length; else elseTemplate">
-            <img style="width: 30%; height: 25%;" [src]="item?.images[0].url" alt="" srcset="">
+            <img style="width: 30%; height: 25%;" [src]="item?.images[0].url | isOnline" alt="" srcset="">
         </ng-container>
         <ng-template #elseTemplate>
           <img style="width: 30%; height: 25%;" src="/assets/img/no-image.png" alt="" srcset="">

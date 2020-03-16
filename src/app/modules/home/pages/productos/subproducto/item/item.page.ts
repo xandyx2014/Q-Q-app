@@ -7,7 +7,7 @@ import { Producto } from 'src/app/shared/interfaces/producto.interface';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.redux';
 import { Subscription } from 'rxjs';
-
+import Viewer from 'viewerjs';
 @Component({
   selector: 'app-item',
   templateUrl: './item.page.html',
@@ -53,6 +53,16 @@ export class ItemPage implements OnInit {
         return producto[0];
       })
     );
+  }
+  iniciarImagenes(event) {
+    console.log(event);
+    const i = `subProducto-${event}`;
+    const viewer = new Viewer(document.getElementById(event), {
+      viewed() {
+        viewer.zoomTo(1);
+      },
+    });
+    // viewer.show();
   }
   async agregarCarrito() {
     const modal = await this.modalController.create({

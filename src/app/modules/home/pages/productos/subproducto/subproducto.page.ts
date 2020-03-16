@@ -6,7 +6,7 @@ import { AppState } from 'src/app/store/app.redux';
 import { pedirSubProductoAction } from 'src/app/store/actions/subProducto.actions';
 import { filter, map } from 'rxjs/operators';
 import { Producto } from 'src/app/shared/interfaces/producto.interface';
-
+import Viewer from 'viewerjs';
 
 @Component({
   selector: 'app-subproducto',
@@ -37,6 +37,14 @@ export class SubproductoPage implements OnInit {
     ).subscribe(resp => {
       this.subProductos = resp.data;
       console.log(this.subProductos);
+    });
+  }
+  iniciarImagenes(event) {
+    console.log(event);
+    const viewer = new Viewer(document.getElementById(event), {
+      viewed() {
+        viewer.zoomTo(1);
+      },
     });
   }
   ionViewWillLeave() {

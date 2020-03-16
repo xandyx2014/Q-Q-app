@@ -9,7 +9,7 @@ import { ProductoPageRoutingModule } from './producto-routing.module';
 import { ProductoPage } from './producto.page';
 import { ItemComprarComponent } from './components/item-comprar/item-comprar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     IonicModule,
     FlexLayoutModule,
-    ProductoPageRoutingModule
+    PipesModule,
+    ProductoPageRoutingModule,
   ],
   declarations: [
     ProductoPage,

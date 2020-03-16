@@ -8,6 +8,7 @@ import { ItemPageRoutingModule } from './item-routing.module';
 
 import { ItemPage } from './item.page';
 import { ItemComprarComponent } from '../components/item-comprar/item-comprar.component';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ItemComprarComponent } from '../components/item-comprar/item-comprar.co
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    PipesModule,
     ItemPageRoutingModule
   ],
   declarations: [

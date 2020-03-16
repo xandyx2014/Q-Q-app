@@ -16,12 +16,15 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { SumProductoPipe } from './shared/pipes/sum-producto.pipe';
+import { Network } from '@ionic-native/network/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      mode: 'ios'
+    }),
     AppRoutingModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
@@ -35,6 +38,7 @@ import { SumProductoPipe } from './shared/pipes/sum-producto.pipe';
   providers: [
     StatusBar,
     SplashScreen,
+    Network,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

@@ -1,9 +1,9 @@
 <ion-content>
   <ng-container *ngIf="ok; else elseTemplate">
     <ion-slides pager="true" [options]="slideOpts" >
-      <ion-slide *ngFor="let item of producto?.images">
-        <ng-container>
-          <img style="width: 100%; height: 45vh; background-size: cover;" [src]="item.url" alt="" srcset="">
+      <ion-slide *ngFor="let item of producto?.images; let i = index">
+        <ng-container *ngIf="producto.images.length">
+          <img id="`subProducto-{{i}}" (click)="iniciarImagenes(i)" style="width: 100%; height: 45vh;" [src]="item.url | isOnline" alt="" srcset="">
         </ng-container>
       </ion-slide>
       <ng-container *ngIf="producto.images.length == 0;">

@@ -8,6 +8,7 @@ import { SubproductoPageRoutingModule } from './subproducto-routing.module';
 
 import { SubproductoPage } from './subproducto.page';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     IonicModule,
     FlexLayoutModule,
+    PipesModule,
     SubproductoPageRoutingModule
   ],
   declarations: [SubproductoPage],
