@@ -21,6 +21,7 @@ export class ProductosService {
   }
 
   obtenerProducto(url = PRODUCTO_URL_PAGINATE, q = '') {
+    // const urlProducto = `https://qyqweb.herokuapp.com/type_company_customer/${}/listproducts`;
     return from(
       this.loginService.userAuth()
     ).pipe(
@@ -34,8 +35,10 @@ export class ProductosService {
             q
           }
         });
+        console.log(usuario);
+        const urlProducto = `${URL_WEB}/type_company_customer/${usuario[0].customer_id}/listproducts?page=1`;
         if (navigator.onLine) {
-          return this.http.get(`${url}&per_page=20`, { headers, params }).pipe(
+          return this.http.get(`${urlProducto}&per_page=20`, { headers, params }).pipe(
             tap( (res: any) => {
               this.storageService.guardarDatos({
                 referencia: url,

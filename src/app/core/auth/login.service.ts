@@ -15,6 +15,7 @@ import { RefrescarIdOneSignalService } from '../services/refrescar-id-one-signal
 })
 export class LoginService {
   private token: string;
+  private customerId;
   constructor(
     private http: HttpClient,
     private storage: StorageService,
@@ -31,6 +32,9 @@ export class LoginService {
     this.http.post(`${URL_WEB}/auth/login`, { ...user }, { observe: 'response' })
       .pipe(
         tap( async (resp) => {
+          console.log(resp.body);
+          // tslint:disable-next-line: no-string-literal
+          this.customerId = resp.body['customer_id'];
           // resp.body['user_id']
           // tslint:disable-next-line: no-string-literal
           localStorage.setItem(ID_USER, resp.body['user_id']);
@@ -46,7 +50,7 @@ export class LoginService {
           await loading.dismiss();
           if (resp) {
             await this.storage.guardarDatos({
-              dato: {...resp.body, token: this.token},
+              dato: {...resp.body, token: this.token, ['customer_id']: this.customerId},
               referencia: USER_AUTH
             });
             await this.router.navigate(['/home']);

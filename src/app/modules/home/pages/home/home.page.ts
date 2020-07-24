@@ -16,7 +16,6 @@ export class HomePage implements OnInit {
   constructor(
     private ordenServiceService: OrdenServiceService,
     private loginService: LoginService,
-    private informacionService: InformacionService
   ) { }
 
   ngOnInit() {
