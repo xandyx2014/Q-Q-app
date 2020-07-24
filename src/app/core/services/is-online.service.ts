@@ -8,7 +8,7 @@ export class IsOnlineService {
 
   constructor(private net: Network) { }
   isConnected(): boolean {
-    console.log(this.net.Connection);
+    // console.log(this.net.Connection);
     const conntype = this.net.type;
     return conntype && conntype !== 'unknown' && conntype !== 'none';
   }

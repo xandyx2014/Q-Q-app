@@ -8,11 +8,13 @@ import { DetallePedidoPageRoutingModule } from './detalle-pedido-routing.module'
 
 import { DetallePedidoPage } from './detalle-pedido.page';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    FlexLayoutModule,
     DetallePedidoPageRoutingModule,
     NgxDatatableModule
   ],

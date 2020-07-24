@@ -39,7 +39,7 @@ export class CarritoPage implements OnInit {
       filter(resp => resp.data.length !== null)
     ).subscribe(resp => {
       this.carrito = resp.data;
-      console.log(resp);
+      // console.log(resp);
     });
   }
   aumentarCantidadProducto(item: Producto, event) {

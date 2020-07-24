@@ -8,7 +8,7 @@ const initialState: { data: Producto[] } = {
 export const reducer = createReducer(initialState,
     on(pedirSubProductoAction),
     on(agregarSubProductoAction, ((state, productos) => {
-        console.log(state, productos);
+        // console.log(state, productos);
         return {
             data: [...productos.data]
         };

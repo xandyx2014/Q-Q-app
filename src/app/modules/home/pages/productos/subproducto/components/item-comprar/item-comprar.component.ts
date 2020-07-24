@@ -32,7 +32,7 @@ export class ItemComprarComponent implements OnInit {
     });
   }
   comprar() {
-    console.log(this.navParams.data);
+    // console.log(this.navParams.data);
     // const producto = {...this.navParams.data, uid: uuidv1()};
     this.store.dispatch(AgregarCarritoAction(({
       ...this.navParams.data,

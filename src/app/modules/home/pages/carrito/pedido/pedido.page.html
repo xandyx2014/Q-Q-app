@@ -9,7 +9,7 @@
         <ion-item>
           <ion-label position="stacked">Nombre usuario<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="name" disabled type="text"></ion-input>
+          <ion-input formControlName="name" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('name').hasError('required') && myForm.get('name').touched" color="danger">
           El nombre es requerido
@@ -17,7 +17,7 @@
         <ion-item>
           <ion-label position="stacked">Apellido Paterno<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="father_last_name" disabled type="text"></ion-input>
+          <ion-input formControlName="father_last_name" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('father_last_name').hasError('required') && myForm.get('father_last_name').touched"
           color="danger">
@@ -26,7 +26,7 @@
         <ion-item>
           <ion-label position="stacked">Apellido Materno<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="mother_last_name" disabled type="text"></ion-input>
+          <ion-input formControlName="mother_last_name" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('mother_last_name').hasError('required') && myForm.get('mother_last_name').touched"
           color="danger">
@@ -35,7 +35,7 @@
         <ion-item>
           <ion-label position="stacked">CI<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="ci"  disabled type="text"></ion-input>
+          <ion-input formControlName="ci"  [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('ci').hasError('required') && myForm.get('ci').touched" color="danger">
           El CI es requerido
@@ -43,7 +43,7 @@
         <ion-item>
           <ion-label position="stacked">Fecha Cumpleaño<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-datetime formControlName="birth_date" disabled display-format="YYYY-MM-DD" min="1900"></ion-datetime>
+          <ion-datetime formControlName="birth_date" [attr.disabled]="true" display-format="YYYY-MM-DD" min="1900"></ion-datetime>
           <!-- <ion-input type="text"></ion-input> -->
         </ion-item>
         <ion-text *ngIf="myForm.get('birth_date').hasError('required') && myForm.get('birth_date').touched"
@@ -53,7 +53,7 @@
         <ion-item>
           <ion-label position="stacked">Lugar de nacimiento<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="birth_place" disabled type="text"></ion-input>
+          <ion-input formControlName="birth_place" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('birth_place').hasError('required') && myForm.get('birth_place').touched"
           color="danger">
@@ -62,7 +62,7 @@
         <ion-item>
           <ion-label position="stacked">Telefono<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="phone" disabled type="text"></ion-input>
+          <ion-input formControlName="phone" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('phone').hasError('required') && myForm.get('phone').touched" color="danger">
           El telefono es requerido
@@ -70,7 +70,7 @@
         <ion-item>
           <ion-label position="stacked">Celular<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="cell_phone" disabled type="text"></ion-input>
+          <ion-input formControlName="cell_phone" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('cell_phone').hasError('required') && myForm.get('cell_phone').touched"
           color="danger">
@@ -79,7 +79,7 @@
         <ion-item>
           <ion-label position="stacked">Direccion<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="address" disabled type="text"></ion-input>
+          <ion-input formControlName="address" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('address').hasError('required') && myForm.get('address').touched" color="danger">
           La direccion es requerida
@@ -87,7 +87,7 @@
         <ion-item>
           <ion-label position="stacked">Email<ion-text color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="email" disabled type="text"></ion-input>
+          <ion-input formControlName="email" [attr.disabled]="true" type="text"></ion-input>
         </ion-item>
         <ion-text *ngIf="myForm.get('email').hasError('required') && myForm.get('email').touched" color="danger">
           El email es requerido

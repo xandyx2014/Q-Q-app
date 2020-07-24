@@ -35,7 +35,7 @@ export class ItemPage implements OnInit {
       switchMap( ({id}) => this.iniciarDatos(id))
     )
     .subscribe( (resp: any) => {
-      console.log(resp);
+      // console.log(resp);
       this.producto = resp;
       this.ok = true;
     } );
@@ -55,7 +55,7 @@ export class ItemPage implements OnInit {
     );
   }
   iniciarImagenes(event) {
-    console.log(event);
+    // console.log(event);
     const i = `subProducto-${event}`;
     const viewer = new Viewer(document.getElementById(event), {
       viewed() {

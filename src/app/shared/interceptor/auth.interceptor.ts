@@ -16,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const duplicate = req.clone();
     return next.handle(duplicate).pipe(
       catchError((error) => {
-        console.log(error);
+        // console.log(error);
         this.router.navigate(['/login']).then( () => {
           this.informacionService.presentToast('Ups Ha ocurrido un Error Inesperado');
         });

@@ -22,6 +22,7 @@ export class OrdenServiceService {
     return this.http.get(`${URL_WEB}/user_app_customer/${id}/orders`, {params});
   }
   realizarOrden(orden) {
+    // console.log(orden, 'PEDIDO SERVICE');
     return this.http.post(`${URL_WEB}/order`, {...orden});
   }
 }

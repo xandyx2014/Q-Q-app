@@ -8,7 +8,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { PRODUCTO_URL_PAGINATE } from 'src/app/config/variable.config';
 import { InformacionService } from 'src/app/core/services/informacion.service';
 import { Subscription, of } from 'rxjs';
-import { tap, filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-productos',
@@ -54,7 +54,7 @@ export class ProductosPage implements OnInit {
       filter(resp => resp.data !== null)
     ).subscribe(resp => {
       this.productos = resp;
-      console.log(resp);
+      // console.log(resp);
     });
   }
   ionViewDidLeave() {
@@ -66,9 +66,9 @@ export class ProductosPage implements OnInit {
   cargarDato(event, meta: RespProductos['meta']) {
     // tslint:disable-next-line: no-string-literal
     const next = meta.pagination.links.next;
-    console.log(next);
+    // console.log(next);
     if (typeof next !== 'undefined') {
-      console.log('entre');
+      // console.log('entre');
       this.store.dispatch(pedirProductoAction({
         url: next
       }));

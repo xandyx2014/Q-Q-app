@@ -58,6 +58,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             path: 'usuario',
             loadChildren: () => import('./pages/usuario/usuario.module').then( m => m.UsuarioPageModule)
           },
+          {
+            path: 'historial',
+            loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+          }
         ]
       }
     ])

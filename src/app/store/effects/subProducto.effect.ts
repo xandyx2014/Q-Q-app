@@ -10,11 +10,11 @@ export class SubProductoEffect {
     medicion$ = createEffect(() => this.actions$.pipe(
         ofType(pedirSubProductoAction),
         switchMap( action => {
-            console.log(action);
+            // console.log(action);
             const {id} = action;
             return this.productoService.obtenerSubProducto(id).pipe(
                 map((result: any) => {
-                    console.log(result);
+                    // console.log(result);
                     return agregarSubProductoAction({ data: result.data});
                 })
             );

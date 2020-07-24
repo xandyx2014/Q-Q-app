@@ -47,7 +47,7 @@ export class PedidosPage implements OnInit {
     this.router.navigate(['/home/detalle-pedido', item.id]);
   }
   buscar() {
-    const orderState = this.myForm.value.state_order === true ? '1' : '0';
+    const orderState = this.myForm.value.state_order === true ? '1' : '5';
     const min = subHours(new Date(this.myForm.value.minDate), 1);
     const max = addHours(new Date(this.myForm.value.maxDate), 26);
     // console.log(, format(max, 'yyyy-MM-dd'));
@@ -59,13 +59,13 @@ export class PedidosPage implements OnInit {
       minDate,
       maxDate
     };
-    console.log(busqueda);
+    // console.log(busqueda);
     this.ok = false;
     from(this.loginService.userAuth()).pipe(
       map(resp => resp[0]),
       switchMap(resp => this.ordenServiceService.obtenerOrdenes(resp.id, busqueda)),
       tap(resp => {
-        console.log(resp);
+        // console.log(resp);
       }),
       pluck('data'),
       tap((resp: any[]) => {
@@ -76,7 +76,7 @@ export class PedidosPage implements OnInit {
     ).subscribe((resp: any[]) => {
       this.ordenes = resp;
       this.ok = true;
-      console.log(resp);
+      // console.log(resp);
     });
   }
 }

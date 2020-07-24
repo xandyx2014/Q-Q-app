@@ -38,7 +38,7 @@ export class ProductoPage implements OnInit {
   ionViewWillEnter() {
   }
   iniciarImagenes(event) {
-    console.log(event);
+    // console.log(event);
     const i = `producto-${event}`;
     const viewer = new Viewer(document.getElementById(i), {
       viewed() {

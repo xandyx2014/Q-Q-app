@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'tour',
     loadChildren: () => import('./modules/tour/tour.module').then( m => m.TourPageModule)
-  }
+  },
 ];
 
 @NgModule({

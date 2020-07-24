@@ -31,7 +31,7 @@ export class HomePage implements OnInit {
     ).subscribe( ( resp: any) => {
       this.pendientes = resp.pendientes;
       this.entregados = resp.entregados;
-      console.log(resp);
+      // console.log(resp);
     });
   }
 

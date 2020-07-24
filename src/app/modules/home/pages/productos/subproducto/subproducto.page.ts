@@ -28,7 +28,7 @@ export class SubproductoPage implements OnInit {
   }
   ionViewWillEnter() {
     this.subscription = this.activatedRoute.params.subscribe( ({id}) => {
-      console.log(id);
+      // console.log(id);
       this.store.dispatch(pedirSubProductoAction({ id }));
     });
     this.productos$ = this.store.pipe(
@@ -36,11 +36,11 @@ export class SubproductoPage implements OnInit {
       filter(resp => resp.data !== null)
     ).subscribe(resp => {
       this.subProductos = resp.data;
-      console.log(this.subProductos);
+      // console.log(this.subProductos);
     });
   }
   iniciarImagenes(event) {
-    console.log(event);
+    // console.log(event);
     const viewer = new Viewer(document.getElementById(event), {
       viewed() {
         viewer.zoomTo(1);

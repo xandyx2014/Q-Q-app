@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home/historial" (click)="irAtras()" text="Salir"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ng-container *ngIf="detalleProducto; else elseTemplate">
+    <form [formGroup]="myForm">
+    <ion-list fullscreen>
+      <ion-item>
+          <ion-label style="font-weight: bold;">Tipo de Reclamo</ion-label>
+          <ion-select formControlName="estado" value="1" okText="Aceptar" cancelText="Cerrar" mode="md">
+            <ion-select-option value="1">Aceptado</ion-select-option>
+            <ion-select-option value="3">Rechazado</ion-select-option>
+            <ion-select-option value="6">Con Observacion</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+      <ion-item *ngFor="let item of detalleProducto">
+          <ion-label>{{ item.product.generic_name}}</ion-label>
+          <ion-checkbox [formControlName]="item.id" mode="md" slot="end" [disabled]="desabilitarCheckBox"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+          <ion-textarea formControlName="observacion" class="ion-margin" placeholder="Escribe una pequeña descripcion..." clearOnEdit="true" maxlength="240"></ion-textarea>
+      </ion-item>
+      <ion-fab (click)="enviar()" vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button>
+              <ion-icon name="send"></ion-icon>
+          </ion-fab-button>
+      </ion-fab>
+    </ion-list>
+  </form>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div style="width: 100%;" class="ion-text-center"> <ion-spinner name="bubbles"></ion-spinner></div>
+     
+  </ng-template>
+  
+    
+</ion-content>

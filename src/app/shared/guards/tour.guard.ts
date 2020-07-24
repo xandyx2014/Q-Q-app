@@ -18,7 +18,7 @@ export class TourGuard implements CanLoad {
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
     return from(this.storage.get(TOUR_KEY)).pipe(
       map( value => {
-        console.log(value);
+        // console.log(value);
         if (value === null || typeof value === 'undefined') {
           this.router.navigate(['/tour']);
           return false;

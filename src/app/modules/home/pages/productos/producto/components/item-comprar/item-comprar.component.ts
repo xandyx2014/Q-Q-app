@@ -25,7 +25,7 @@ export class ItemComprarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.navParams.data);
+    // console.log(this.navParams.data);
     this.crearFormulario();
   }
   crearFormulario() {

@@ -59,7 +59,7 @@ export class PedidoPage implements OnInit, AfterViewInit {
       )
       .subscribe((res) => {
         this.persona = res;
-        console.log(this.persona);
+        // console.log(this.persona);
         this.iniciarFomulario(this.persona);
         this.obtenerProducto();
         this.ok = true;
@@ -75,7 +75,7 @@ export class PedidoPage implements OnInit, AfterViewInit {
       filter(resp => resp.data.length !== null)
     ).subscribe(resp => {
       this.carrito = resp.data;
-      console.log(resp);
+      // console.log(resp);
     });
   }
   iniciarFomulario(persona) {
@@ -107,7 +107,7 @@ export class PedidoPage implements OnInit, AfterViewInit {
             role: 'cancel',
             cssClass: 'secondary',
             handler: (blah) => {
-              console.log('Confirm Cancel: blah');
+             // console.log('Confirm Cancel: blah');
             }
           }, {
             text: 'Aceptar',
@@ -136,7 +136,7 @@ export class PedidoPage implements OnInit, AfterViewInit {
     };
     // console.log(JSON.stringify(pedido));
     this.order$ = this.ordenService.realizarOrden(pedido).subscribe( async resp => {
-      console.log(resp);
+      console.log('PEDIDO REALIZADO',  resp);
       this.store.dispatch(EliminarTodosCarritoAction());
       await this.router.navigate(['home']);
       this.informacionService.presentAlert({
@@ -177,7 +177,7 @@ export class PedidoPage implements OnInit, AfterViewInit {
       const { lng, lat } = this.map.getCenter();
       this.lng = lng;
       this.lat = lat;
-      console.log(`lng ${lng}`, `lat ${lat}`);
+      // console.log(`lng ${lng}`, `lat ${lat}`);
     });
     this.map.addControl(new mapboxgl.NavigationControl());
   }

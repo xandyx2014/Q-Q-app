@@ -14,7 +14,7 @@ const initialState: {data: Producto[]} = {
 export const reducer = createReducer(initialState,
     on(SolicitarCarritoAction),
     on(AgregarCarritoAction, (state, action) => {
-        console.log(action);
+        // console.log(action);
         return {
             data: [ ...state.data, {...action}]
         };

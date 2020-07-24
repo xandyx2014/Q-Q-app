@@ -47,7 +47,7 @@ export class ProductosService {
         return from(this.storageService.obtenerDatos(url)).pipe(
           map( resp => {
             if (resp === null) {
-              console.log('entre', resp);
+              // console.log('entre', resp);
               return {
                 data: [],
                 meta: {
@@ -77,11 +77,11 @@ export class ProductosService {
           ['Authorization']: `Bearer ${usuario[0].Stoken}`
         });
         if (navigator.onLine) {
-          console.log('online');
+          // console.log('online');
           return this.http.get(`${URL_WEB}/product/son/${id}`, { headers })
             .pipe(
               tap( resp => {
-                console.log('resp storage', id , resp);
+                // console.log('resp storage', id , resp);
                 this.storageService.guardarDatos({
                   referencia: id,
                   dato: resp
@@ -92,7 +92,7 @@ export class ProductosService {
         return from(this.storageService.obtenerDatos(id)).pipe(
           map(resp => {
             if (resp === null || typeof resp === 'undefined') {
-              console.log('hola', resp);
+              // console.log('hola', resp);
               return [{
                 data: []
               }];

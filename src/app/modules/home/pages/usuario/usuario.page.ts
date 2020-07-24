@@ -40,7 +40,7 @@ export class UsuarioPage implements OnInit {
         this.iniciarFomulario(this.usuario);
         this.ok = true;
       });
-    console.log(navigator.onLine);
+    // console.log(navigator.onLine);
   }
   ionViewDidLeave() {
     this.subscription.unsubscribe();

@@ -17,6 +17,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { SumProductoPipe } from './shared/pipes/sum-producto.pipe';
 import { Network } from '@ionic-native/network/ngx';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -39,6 +40,7 @@ import { Network } from '@ionic-native/network/ngx';
     StatusBar,
     SplashScreen,
     Network,
+    OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserAuth } from 'src/app/shared/interfaces/auth/user.interface';
-import { URL_WEB, USER_AUTH } from 'src/app/config/variable.config';
+import { URL_WEB, USER_AUTH, USER_AUTH_ID, ID_USER } from 'src/app/config/variable.config';
 import { flatMap, tap, map, pluck } from 'rxjs/operators';
 import { Username } from 'src/app/shared/interfaces/user.interface';
 import { StorageService } from '../services/storage.service';
 import { InformacionService } from '../services/informacion.service';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { RefrescarIdOneSignalService } from '../services/refrescar-id-one-signal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class LoginService {
     private storage: StorageService,
     private informacionService: InformacionService,
     private router: Router,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private refrescarIdOneSignalService: RefrescarIdOneSignalService
   ) { }
   async getToken(user: UserAuth) {
     const loading = await this.loadingController.create({
@@ -28,6 +30,12 @@ export class LoginService {
     await loading.present();
     this.http.post(`${URL_WEB}/auth/login`, { ...user }, { observe: 'response' })
       .pipe(
+        tap( async (resp) => {
+          // resp.body['user_id']
+          // tslint:disable-next-line: no-string-literal
+          localStorage.setItem(ID_USER, resp.body['user_id']);
+          this.refrescarIdOneSignalService.start();
+        }),
         flatMap((resp: any) => {
           this.token = resp.body.access_token;
           return this.login(resp.body.access_token);

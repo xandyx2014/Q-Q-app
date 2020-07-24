@@ -13,38 +13,7 @@ import { switchMap, filter } from 'rxjs/operators';
 })
 export class DetallePedidoPage implements OnInit {
   @ViewChild('myTable', { static: false }) table: any;
-  rows: any[] = [
-  /* {
-    id: 9,
-    name: 'Johns Wood',
-    gender: 'male',
-    age: 52,
-    address: {
-      state: 'Maine',
-      city: 'Witmer'
-    }
-  },
-  {
-    id: 9,
-    name: 'Johns Wood',
-    gender: 'male',
-    age: 52,
-    address: {
-      state: 'Maine',
-      city: 'Witmer'
-    }
-  },
-  {
-    id: 9,
-    name: 'Johns Wood',
-    gender: 'male',
-    age: 52,
-    address: {
-      state: 'Maine',
-      city: 'Witmer'
-    }
-  }, */
-  ];
+  rows: any[] = [];
   expanded = {};
   timeout: any;
   ColumnMode = ColumnMode;
@@ -64,7 +33,7 @@ export class DetallePedidoPage implements OnInit {
       filter( resp => typeof resp !== 'undefined')
     )
     .subscribe(resp => {
-      console.log(resp);
+      // console.log(resp);
       this.rows = resp;
       this.ok = true;
     });
@@ -75,16 +44,16 @@ export class DetallePedidoPage implements OnInit {
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      console.log('paged!', event);
+      // console.log('paged!', event);
     }, 100);
   }
   toggleExpandRow(row) {
-    console.log('Toggled Expand Row!', row);
+    // console.log('Toggled Expand Row!', row);
     this.table.rowDetail.toggleExpandRow(row);
   }
 
   onDetailToggle(event) {
-    console.log('Detail Toggled', event);
+    // console.log('Detail Toggled', event);
   }
 
 
