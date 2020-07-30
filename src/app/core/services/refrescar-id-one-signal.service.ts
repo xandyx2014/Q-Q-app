@@ -16,8 +16,10 @@ export class RefrescarIdOneSignalService {
     const userId = localStorage.getItem(ID_USER);
     console.log(idOneSignal, 'ONE SIGNAL ID ');
     // tslint:disable-next-line: no-string-literal
-    this.http.put(`${URL_WEB}/user_app_customer/${userId}?tokenPush=${idOneSignal}`, {}).subscribe(oneSignalResp => {
-      console.log(oneSignalResp);
-    });
+    if (userId !== null || idOneSignal !== null || typeof userId !== 'undefined' || typeof idOneSignal !== 'undefined') {
+      this.http.put(`${URL_WEB}/user_app_customer/${userId}?tokenPush=${idOneSignal}`, {}).subscribe(oneSignalResp => {
+        console.log(oneSignalResp);
+      });
+    }
   }
 }

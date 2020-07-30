@@ -67,7 +67,7 @@ export class ResultadoComponent implements OnInit {
                         const detalleObject =  {
                             order_id: this.pedidoId,
                             detail_order_id: resp,
-                            state: valor
+                            state: Number(valor)
                         };
                         detalleArray.push(detalleObject);
                     }
