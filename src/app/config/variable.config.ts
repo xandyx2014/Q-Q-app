@@ -37,4 +37,5 @@ export const USER_AUTH = 'username';
 export const USER_AUTH_ID = 'username_id';
 export const ID_USER = 'user id from user';
 export const PERSON_KEY = '[Persona Key]';
+export const ACCESS_TOKEN = 'access_token';
 export const PRODUCTO_URL_PAGINATE = 'https://qyqweb.herokuapp.com/product?page=1';

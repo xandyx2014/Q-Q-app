@@ -36,6 +36,7 @@ export class UsuarioPage implements OnInit {
         switchMap(person => this.personService.obtenerCliente(person.person_id))
       )
       .subscribe((res) => {
+        console.log(res);
         this.usuario = res;
         this.iniciarFomulario(this.usuario);
         this.ok = true;

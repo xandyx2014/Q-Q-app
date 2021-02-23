@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserAuth } from 'src/app/shared/interfaces/auth/user.interface';
-import { URL_WEB, USER_AUTH, USER_AUTH_ID, ID_USER } from 'src/app/config/variable.config';
+import { URL_WEB, USER_AUTH, ID_USER, ACCESS_TOKEN } from 'src/app/config/variable.config';
 import { flatMap, tap, map, pluck } from 'rxjs/operators';
 import { Username } from 'src/app/shared/interfaces/user.interface';
 import { StorageService } from '../services/storage.service';
@@ -72,6 +72,7 @@ export class LoginService {
     return this.storage.obtenerDatos<Username>(USER_AUTH);
   }
   login(token: string) {
+    localStorage.setItem(ACCESS_TOKEN, token);
     const headers = new HttpHeaders({
       ['Content-Type']: 'application/json',
       ['Authorization']: `Bearer ${token}`
